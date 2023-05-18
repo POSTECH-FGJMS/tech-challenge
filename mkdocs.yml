@@ -1,6 +1,7 @@
 site_name: Tech Challenge
 theme:
   name: material
+dev_addr: 0.0.0.0:8000
 markdown_extensions:
   - pymdownx.superfences:
       custom_fences:

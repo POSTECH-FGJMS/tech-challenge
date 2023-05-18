@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  wiki:
+    container_name: wiki
+    build: .
+    volumes:
+      - .:/opt/app
+    ports:
+      - 8000:8000
