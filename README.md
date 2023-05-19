@@ -1,5 +1,9 @@
 # Tech Challenge Wiki
 
+
+https://postech-fgjms.github.io/tech-challenge/
+
+
 ## Rodando localmente
 
 Seguem abaixo os passos para rodar a wiki localmente.
