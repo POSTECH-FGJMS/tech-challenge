@@ -1,5 +1,11 @@
 # Entrega
 
+## Histórico de Revisão
+
+|Data|Versão|Descrição|Autor(es)|
+|----|------|---------|---------|
+|07/05/2023|0.1|Criação do documento|Marianna Teixeira|
+
 A aplicação deve ser entregue com um Dockerfile configurado para executá-la corretamente.
 
 - Aplicação deverá ser escalável para atender grandes volumes nos horários de pico
