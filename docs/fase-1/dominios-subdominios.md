@@ -15,6 +15,7 @@ O domínio da lanchonete é a alimentação dos clientes, por meio de lanches pe
 Atividades que diferenciam nossa lanchonete das outras do mercado:
 
 - Personalização dos pedidos
+- Pagamento via autoatendimento
 
 ## Subdomínios de suporte
 
