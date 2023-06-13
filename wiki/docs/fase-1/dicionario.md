@@ -5,12 +5,14 @@
 |Data|Versão|Descrição|Autor(es)|
 |----|------|---------|---------|
 |19/05/2023|0.1|Criação do documento|Pedro Féo|
+|12/06/2023|0.2|Adição de atendente e item|Júlio Saldanha|
 
 ## Termos usados no projeto
 
 ### A
 ---
- - **Acompanhamento**: item secundário ao Lanche, por exemplo, batata ou nuggets.
+ - **Acompanhamento**: item secundário, por exemplo, batata ou nuggets.
+ - **Atendente**: funcionário que entrega o pedido da cozinha ao cliente.
 
 ### C
 ---
@@ -21,9 +23,9 @@
 ---
  - **Fila de pedidos**: ordem em que os Pedidos devem ser realizados.
 
-### L
+### I
 ---
- - **Lanche**: parte principal do pedido, normalmente um sanduíche.
+ - **Item**: é produto que está sendo vendido, pode ser o lanche, a bebida, acompanhamento ou sobremesa.
 
 ### M
 ---
@@ -32,7 +34,6 @@
 ### P
 ---
  - **Pedido**: conjunto de items que um Cliente solicita, pode conter Lanches, Acompanhamentos, Bebidas e Sobremesas.
- - **Produto**: qualquer item que está no cardápio e pode compor um Pedido.
 
 ### S
 ---
