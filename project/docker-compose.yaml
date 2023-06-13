@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+
+  postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=lanchonete
+      - POSTGRES_PASSWORD=password
