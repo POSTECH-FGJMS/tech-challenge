@@ -1,8 +1,8 @@
 import express from 'express';
-import routes from '../routes/ClientRoutes';
+import clientRoutes from '../routes/ClientRoutes';
 
 const app = express();
 
-app.use('/users', routes);
+app.use('/clients', clientRoutes);
 
 export default app;

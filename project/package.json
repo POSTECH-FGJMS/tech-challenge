@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "build": "tsc",
-    "start": "tsc && node dist/adapter/driver/config/index.js",
-    "start:dev": "nodemon -L src/adapter/driver/config/index.ts",
+    "start": "tsc && node dist/adapter/driver/config/Server.js",
+    "start:dev": "nodemon -L src/adapter/driver/config/Server.ts",
     "docker": "docker compose up --build",
     "test": "jest",
     "lint": "eslint 'src/**/*.ts'"

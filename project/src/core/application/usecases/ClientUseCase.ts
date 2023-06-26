@@ -7,7 +7,7 @@ export class ClientUseCase implements IClientUseCase {
 
   constructor(private readonly clientRepository: IClientRepository) { }
 
-  public getClient(params: ClientReadDto): Promise<Cliente> {
+  public getClient(params: ClientReadDto): Promise<Cliente[]> {
     return this.clientRepository.readClient(params);
   }
 }
