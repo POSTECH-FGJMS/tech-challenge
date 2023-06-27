@@ -1,6 +1,6 @@
-import ValueObject from "./ValueObject";
+import IValueObject from "./IValueObject";
 
-export default class CPF implements ValueObject {
+export default class CPF implements IValueObject {
   value: string;
 
   constructor(value: string) {
