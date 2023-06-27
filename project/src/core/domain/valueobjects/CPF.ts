@@ -1,9 +1,9 @@
-import IValueObject from "./IValueObject";
+import IValueObject from './IValueObject'
 
 export default class CPF implements IValueObject {
-  value: string;
+    value: string
 
-  constructor(value: string) {
-    this.value = value;
-  }
+    constructor(value: string) {
+        this.value = value
+    }
 }
