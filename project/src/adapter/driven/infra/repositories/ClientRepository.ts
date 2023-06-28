@@ -15,7 +15,11 @@ export class ClientRepository implements IClientRepository {
   }
 
   public async readClient(params: IClientReadDto): Promise<Client[]> {
-    const clients = await this.repository.find();
+    const { id, name, email, cpf } = params;
+
+    const where = ClientMapper.toEntity({ id, name, email, cpf } as Client)
+    const clients = await this.repository.find({ where: { ...where } });
+
     return clients.map(ClientMapper.toDomain);
   }
 }

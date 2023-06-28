@@ -7,12 +7,12 @@ export class ClientEntity extends BaseEntity {
   id: string
 
   @Column({ nullable: true })
-  name: string
+  name?: string
 
   @Column({ nullable: true })
-  email: string
+  email?: string
 
   @Column({ nullable: true })
-  cpf: string
+  cpf?: string
 
 }
