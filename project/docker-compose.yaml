@@ -6,11 +6,15 @@ services:
       - "8080:8080"
     depends_on:
       - postgres
+    environment:
+      - DB_HOST=postgres
     volumes:
       - ./src:/app/src
 
   postgres:
     image: postgres:15
+    ports:
+      - "5432:5432"
     environment:
       - POSTGRES_DB=lanchonete
       - POSTGRES_PASSWORD=password
