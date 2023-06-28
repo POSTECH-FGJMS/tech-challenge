@@ -8,7 +8,12 @@ export default class Client implements IEntity {
     name?: string
     email?: Email
 
-    constructor(id: string, cpf: CPF | undefined, name: string | undefined, email: Email | undefined) {
+    constructor(
+        id: string,
+        cpf: CPF | undefined,
+        name: string | undefined,
+        email: Email | undefined
+    ) {
         this.id = id
         this.cpf = cpf
         this.name = name

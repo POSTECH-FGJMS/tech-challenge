@@ -1,4 +1,7 @@
-import { IClientCreateDto, IClientReadDto } from '../../domain/dtos/IClientReadDto'
+import {
+    IClientCreateDto,
+    IClientReadDto,
+} from '../../domain/dtos/IClientReadDto'
 import Client from '../../domain/entities/Client'
 
 export interface IClientUseCase {
