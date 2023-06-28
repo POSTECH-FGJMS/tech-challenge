@@ -1,4 +1,4 @@
-import { Repository } from "typeorm";
+import { DeepPartial, Repository } from "typeorm";
 import { ClientEntity } from "../entities/ClientEntity";
 import { ClientMapper } from "../mappers/ClientMapper";
 import { AppDataSource } from "../orm/TypeOrm";
@@ -14,12 +14,23 @@ export class ClientRepository implements IClientRepository {
     this.repository = AppDataSource.getRepository(ClientEntity);
   }
 
-
   public async createClient(params: IClientCreateDto): Promise<Client> {
     const { name, email, cpf } = params;
+    const clientData: DeepPartial<ClientEntity> = {}
 
-    const entity = ClientMapper.toEntity({ name, email, cpf } as Client)
-    const result = await this.repository.save(entity);
+    if (name) {
+      clientData.name = name;
+    }
+
+    if (email) {
+      clientData.email = email;
+    }
+
+    if (cpf) {
+      clientData.cpf = cpf;
+    }
+
+    const result = await this.repository.save(clientData);
 
     return ClientMapper.toDomain(result);
   }

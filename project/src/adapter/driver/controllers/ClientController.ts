@@ -10,8 +10,6 @@ export class ClientController {
   }
 
   public postUser(request: Request, response: Response): Promise<Client> {
-    const { name, email, cpf } = request.body;
-
-    return this.clientUseCase.postClient({ name, email, cpf });
+    return this.clientUseCase.postClient({ ...request.body });
   }
 }
