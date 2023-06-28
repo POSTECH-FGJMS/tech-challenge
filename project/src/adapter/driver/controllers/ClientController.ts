@@ -5,7 +5,13 @@ import { IClientUseCase } from "../../../core/application/interfaces/IClientUseC
 export class ClientController {
   constructor(private readonly clientUseCase: IClientUseCase) { }
 
-  public async getUser(request: Request, response: Response): Promise<Client[]> {
-    return await this.clientUseCase.getClient({});
+  public getUser(request: Request, response: Response): Promise<Client[]> {
+    return this.clientUseCase.getClient({});
+  }
+
+  public postUser(request: Request, response: Response): Promise<Client> {
+    const { name, email, cpf } = request.body;
+
+    return this.clientUseCase.postClient({ name, email, cpf });
   }
 }

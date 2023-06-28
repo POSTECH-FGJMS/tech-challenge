@@ -1,3 +1,4 @@
-import Cliente from '../entities/Client'
+import Client from '../entities/Client'
 
-export type IClientReadDto = Partial<Cliente>
+export type IClientCreateDto = Omit<Client, 'id'>;
+export type IClientReadDto = Partial<Client>;

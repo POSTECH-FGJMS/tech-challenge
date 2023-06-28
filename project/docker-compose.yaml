@@ -6,6 +6,8 @@ services:
             - '8080:8080'
         depends_on:
             - postgres
+        environment:
+            - DB_HOST=postgres
         volumes:
             - ./src:/app/src
 

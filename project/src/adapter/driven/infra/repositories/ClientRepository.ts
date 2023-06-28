@@ -4,7 +4,7 @@ import { ClientMapper } from "../mappers/ClientMapper";
 import { AppDataSource } from "../orm/TypeOrm";
 import { IClientRepository } from "../../../../core/domain/repositories/IClientRepository";
 import Client from "../../../../core/domain/entities/Client";
-import { IClientReadDto } from "../../../../core/domain/dtos/IClientReadDto";
+import { IClientCreateDto, IClientReadDto } from "../../../../core/domain/dtos/IClientReadDto";
 
 export class ClientRepository implements IClientRepository {
 
@@ -12,6 +12,16 @@ export class ClientRepository implements IClientRepository {
 
   constructor() {
     this.repository = AppDataSource.getRepository(ClientEntity);
+  }
+
+
+  public async createClient(params: IClientCreateDto): Promise<Client> {
+    const { name, email, cpf } = params;
+
+    const entity = ClientMapper.toEntity({ name, email, cpf } as Client)
+    const result = await this.repository.save(entity);
+
+    return ClientMapper.toDomain(result);
   }
 
   public async readClient(params: IClientReadDto): Promise<Client[]> {
