@@ -1,9 +1,9 @@
-import ValueObject from "./ValueObject";
+import IValueObject from './IValueObject'
 
-export default class Email implements ValueObject {
-  value: string;
+export default class Email implements IValueObject {
+    value: string
 
-  constructor(value: string) {
-    this.value = value;
-  }
+    constructor(value: string) {
+        this.value = value
+    }
 }

@@ -1,8 +1,8 @@
-import express from 'express';
-import clientRoutes from '../routes/ClientRoutes';
+import express from 'express'
+import clientRoutes from '../routes/ClientRoutes'
 
-const app = express();
+const app = express()
 
-app.use('/clients', clientRoutes);
+app.use('/clients', clientRoutes)
 
-export default app;
+export default app
