@@ -3,7 +3,7 @@ import Status from '../valueobjects/Status'
 import IEntity from './IEntity'
 
 export default class Order implements IEntity {
-    id: number
+    id: string
     name: string
     description: string
     price: Price
@@ -11,7 +11,7 @@ export default class Order implements IEntity {
     clientId: number
 
     constructor(
-        id: number,
+        id: string,
         name: string,
         description: string,
         price: Price,

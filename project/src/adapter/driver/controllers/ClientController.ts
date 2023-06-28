@@ -1,10 +1,15 @@
+import { Request, Response } from 'express'
+import Client from '../../../core/domain/entities/Client'
 import { IClientUseCase } from '../../../core/application/interfaces/IClientUseCase'
-import Cliente from '../../../core/domain/entities/Client'
 
 export class ClientController {
     constructor(private readonly clientUseCase: IClientUseCase) {}
 
-    getUser(params: any): Promise<Cliente[]> {
+    public getUser(request: Request, response: Response): Promise<Client[]> {
         return this.clientUseCase.getClient({})
+    }
+
+    public postUser(request: Request, response: Response): Promise<Client> {
+        return this.clientUseCase.postClient({ ...request.body })
     }
 }

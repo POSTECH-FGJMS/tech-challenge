@@ -3,7 +3,7 @@ import Price from '../valueobjects/Price'
 import IEntity from './IEntity'
 
 export default class Item implements IEntity {
-    id: number
+    id: string
     name: string
     description: string
     price: Price
@@ -11,7 +11,7 @@ export default class Item implements IEntity {
     orderId: string
 
     constructor(
-        id: number,
+        id: string,
         name: string,
         description: string,
         price: Price,

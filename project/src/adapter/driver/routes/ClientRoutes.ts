@@ -9,6 +9,22 @@ const clientRepository = new ClientRepository()
 const clientUseCase = new ClientUseCase(clientRepository)
 const clientController = new ClientController(clientUseCase)
 
-router.get('/', clientController.getUser.bind(clientController))
+router.get('/', async (req, res) => {
+    try {
+        const result = await clientController.getUser(req, res)
+        res.json(result)
+    } catch (error) {
+        res.status(500).json({ error })
+    }
+})
+
+router.post('/', async (req, res) => {
+    try {
+        const result = await clientController.postUser(req, res)
+        res.json(result)
+    } catch (error) {
+        res.status(500).json({ error })
+    }
+})
 
 export default router
