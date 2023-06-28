@@ -11,7 +11,7 @@ const clientController = new ClientController(clientUseCase)
 
 router.get('/', async (req, res) => {
     try {
-        const result = await clientController.getUser(req, res)
+        const result = await clientController.getUser()
         res.json(result)
     } catch (error) {
         res.status(500).json({ error })
@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const result = await clientController.postUser(req, res)
+        const result = await clientController.postUser(req)
         res.json(result)
     } catch (error) {
         res.status(500).json({ error })

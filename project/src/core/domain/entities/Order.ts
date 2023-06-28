@@ -1,21 +1,19 @@
-import Price from '../valueobjects/Price'
-import Status from '../valueobjects/Status'
 import IEntity from './IEntity'
 
 export default class Order implements IEntity {
     id: string
     name: string
     description: string
-    price: Price
-    status: Status
+    price: string
+    status: string
     clientId: number
 
     constructor(
         id: string,
         name: string,
         description: string,
-        price: Price,
-        status: Status,
+        price: string,
+        status: string,
         clientId: number
     ) {
         this.id = id

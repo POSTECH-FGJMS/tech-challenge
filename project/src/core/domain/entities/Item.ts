@@ -1,21 +1,19 @@
-import Category from '../valueobjects/Category'
-import Price from '../valueobjects/Price'
 import IEntity from './IEntity'
 
 export default class Item implements IEntity {
     id: string
     name: string
     description: string
-    price: Price
-    category: Category
+    price: string
+    category: string
     orderId: string
 
     constructor(
         id: string,
         name: string,
         description: string,
-        price: Price,
-        category: Category,
+        price: string,
+        category: string,
         orderId: string
     ) {
         this.id = id
