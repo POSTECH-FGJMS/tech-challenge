@@ -3,12 +3,12 @@ import Email from '../valueobjects/Email'
 import IEntity from './IEntity'
 
 export default class Client implements IEntity {
-    id: number
+    id: string
     cpf: CPF
     name: string
     email: Email
 
-    constructor(id: number, cpf: CPF, name: string, email: Email) {
+    constructor(id: string, cpf: CPF, name: string, email: Email) {
         this.id = id
         this.cpf = cpf
         this.name = name
