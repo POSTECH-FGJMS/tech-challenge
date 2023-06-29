@@ -1,6 +1,6 @@
 import express from 'express'
 import { ClientUseCase } from '../../../core/application/usecases/ClientUseCase'
-import { ClientRepository } from '../../driven/infra/repositories/ClientRepository'
+import { ClientRepository } from '../../driven/infra/dbRepositories/ClientRepository'
 import { ClientController } from '../controllers/ClientController'
 
 const router = express.Router()

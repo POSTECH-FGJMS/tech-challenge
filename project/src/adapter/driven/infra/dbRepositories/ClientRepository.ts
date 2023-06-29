@@ -1,5 +1,5 @@
 import { DeepPartial, Repository } from 'typeorm'
-import { ClientEntity } from '../entities/ClientEntity'
+import { ClientEntity } from '../dbEntities/ClientEntity'
 import { ClientMapper } from '../mappers/ClientMapper'
 import { AppDataSource } from '../orm/TypeOrm'
 import { IClientRepository } from '../../../../core/domain/repositories/IClientRepository'

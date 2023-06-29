@@ -1,5 +1,5 @@
 import Client from '../../../../core/domain/entities/Client'
-import { ClientEntity } from '../entities/ClientEntity'
+import { ClientEntity } from '../dbEntities/ClientEntity'
 
 export class ClientMapper {
     public static toDomain(entity: ClientEntity): Client {
