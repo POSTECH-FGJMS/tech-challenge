@@ -14,4 +14,8 @@ export default class ItemDBRepository implements ItemRepository {
     public async create(item: Item) {
         return await this.repository.save(item)
     }
+
+    public async getAll() {
+        return await this.repository.find()
+    }
 }

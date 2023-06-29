@@ -7,4 +7,8 @@ export default class ItemController {
     public async postItem(request: Request) {
         return await this.itemUseCases.add({ ...request.body })
     }
+
+    public async getAll() {
+        return await this.itemUseCases.getAll()
+    }
 }
