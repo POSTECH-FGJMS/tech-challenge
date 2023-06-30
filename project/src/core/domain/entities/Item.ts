@@ -3,7 +3,7 @@ import IEntity from './IEntity'
 export interface Item {
     name: string
     description: string
-    price: string
+    price: number
     category: Category
 }
 

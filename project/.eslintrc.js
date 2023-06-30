@@ -33,5 +33,6 @@ module.exports = {
                 argsIgnorePattern: '^_',
             },
         ],
+        'jest/expect-expect': 'off',
     },
 }

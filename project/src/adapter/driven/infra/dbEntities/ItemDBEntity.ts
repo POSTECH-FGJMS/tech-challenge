@@ -13,8 +13,8 @@ export class ItemDBEntity extends BaseEntity {
     @Column()
     description: string
 
-    @Column()
-    price: string
+    @Column('decimal', { scale: 2 })
+    price: number
 
     @Column({
         type: 'enum',

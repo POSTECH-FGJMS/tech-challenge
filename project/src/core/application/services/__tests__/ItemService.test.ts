@@ -16,7 +16,7 @@ describe('Item Service', () => {
     const item: Item = {
         name: 'Batata',
         description: 'Batata Frita',
-        price: '10.99',
+        price: 10.99,
         category: 'Acompanhamento',
     }
 
