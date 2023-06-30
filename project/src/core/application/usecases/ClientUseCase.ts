@@ -1,19 +1,15 @@
 import { IClientUseCase } from '../interfaces/IClientUseCase'
 import { IClientRepository } from '../../domain/repositories/IClientRepository'
-import {
-    IClientCreateDto,
-    IClientReadDto,
-} from '../../domain/dtos/IClientReadDto'
-import Client from '../../domain/entities/Client'
+import { Client, ClientRead } from '../../domain/entities/Client'
 
 export class ClientUseCase implements IClientUseCase {
     constructor(private readonly clientRepository: IClientRepository) {}
 
-    public postClient(params: IClientCreateDto): Promise<Client> {
-        return this.clientRepository.createClient(params)
+    public async postClient(client: Client) {
+        return await this.clientRepository.createClient(client)
     }
 
-    public getClient(params: IClientReadDto): Promise<Client[]> {
-        return this.clientRepository.readClient(params)
+    public async getClient(params: ClientRead) {
+        return await this.clientRepository.readClient(params)
     }
 }

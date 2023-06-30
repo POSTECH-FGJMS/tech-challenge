@@ -1,10 +1,7 @@
-import {
-    IClientCreateDto,
-    IClientReadDto,
-} from '../../domain/dtos/IClientReadDto'
-import Client from '../../domain/entities/Client'
+import { Client, ClientRead } from "../../domain/entities/Client"
+
 
 export interface IClientUseCase {
-    postClient(params: IClientCreateDto): Promise<Client>
-    getClient(params: IClientReadDto): Promise<Client[]>
+    postClient(params: Client): Promise<Client>
+    getClient(params: ClientRead): Promise<Client[]>
 }
