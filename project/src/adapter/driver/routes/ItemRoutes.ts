@@ -23,5 +23,9 @@ router
         '/:id',
         asyncHandler((req, res) => itemController.patchItem(req, res))
     )
+    .delete(
+        '/:id',
+        asyncHandler((req, res) => itemController.deleteItem(req, res))
+    )
 
 export default router

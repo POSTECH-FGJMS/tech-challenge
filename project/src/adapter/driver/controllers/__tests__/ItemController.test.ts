@@ -6,11 +6,13 @@ import ItemController from '../ItemController'
 const mockPostItem = jest.fn()
 const mockGetItem = jest.fn()
 const mockUpdateItem = jest.fn()
+const mockDeleteItem = jest.fn()
 
 const mockUseCases: ItemUseCases = {
     postItem: mockPostItem,
     getItem: mockGetItem,
     updateItem: mockUpdateItem,
+    deleteItem: mockDeleteItem,
 }
 
 const mockResponse = {
@@ -58,5 +60,16 @@ describe('ItemController', () => {
         )
 
         expect(mockUpdateItem).toHaveBeenCalledWith(id, { description })
+    })
+
+    it('should call use cases to delete an item', () => {
+        const id = '123'
+
+        itemController.deleteItem(
+            { params: { id } } as unknown as Request,
+            mockResponse
+        )
+
+        expect(mockDeleteItem).toHaveBeenCalledWith(id)
     })
 })

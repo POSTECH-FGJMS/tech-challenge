@@ -27,4 +27,10 @@ export default class ItemController {
         await this.itemUseCases.updateItem(id, request.body)
         response.json()
     }
+
+    public async deleteItem(request: Request, response: Response) {
+        const { id } = request.params
+        await this.itemUseCases.deleteItem(id)
+        response.json()
+    }
 }

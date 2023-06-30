@@ -4,6 +4,7 @@ import ItemDBRepository from '../ItemDBRepository'
 const mockSave = jest.fn()
 const mockFind = jest.fn()
 const mockUpdate = jest.fn()
+const mockDelete = jest.fn()
 
 jest.mock('../../orm/TypeOrm', () => ({
     AppDataSource: {
@@ -11,6 +12,7 @@ jest.mock('../../orm/TypeOrm', () => ({
             save: mockSave,
             find: mockFind,
             update: mockUpdate,
+            delete: mockDelete,
         }),
     },
 }))
@@ -47,5 +49,12 @@ describe('ItemDBRepository', () => {
         itemDBRepository.updateItem(id, { description })
 
         expect(mockUpdate).toHaveBeenCalledWith(id, { description })
+    })
+
+    it('should call typeorm to delete an item', () => {
+        const id = '123'
+
+        itemDBRepository.deleteItem(id)
+        expect(mockDelete).toHaveBeenCalledWith(id)
     })
 })

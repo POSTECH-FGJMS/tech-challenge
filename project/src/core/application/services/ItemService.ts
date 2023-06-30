@@ -16,4 +16,8 @@ export default class ItemService implements ItemUseCases {
     public async updateItem(itemId: string, itemValues: Partial<ItemEntity>) {
         return await this.repository.updateItem(itemId, itemValues)
     }
+
+    public async deleteItem(itemId: string) {
+        return this.repository.deleteItem(itemId)
+    }
 }

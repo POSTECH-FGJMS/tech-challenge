@@ -1,6 +1,7 @@
 const mockSave = jest.fn()
 const mockFind = jest.fn()
 const mockUpdate = jest.fn()
+const mockDelete = jest.fn()
 
 import app from '../../config/app'
 import request from 'supertest'
@@ -11,6 +12,7 @@ jest.mock('../../../driven/infra/orm/TypeOrm', () => ({
             save: mockSave,
             find: mockFind,
             update: mockUpdate,
+            delete: mockDelete,
         }),
     },
 }))
@@ -56,6 +58,12 @@ describe('ItemRoutes', () => {
         mockUpdate.mockImplementation(() => Promise.resolve())
 
         await request(app).patch('/item/123').send(itemChanges).expect(200)
+    })
+
+    it('should delete an item successfully', async () => {
+        mockDelete.mockImplementation(() => Promise.resolve())
+
+        await request(app).delete('/item/123').expect(200)
     })
 
     it('should return error 500 if item creation fails', async () => {

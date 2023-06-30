@@ -5,11 +5,13 @@ import ItemService from '../ItemService'
 const mockCreateItem = jest.fn()
 const mockReadItem = jest.fn()
 const mockUpdateItem = jest.fn()
+const mockDeleteItem = jest.fn()
 
 const mockRepository: ItemRepository = {
     createItem: mockCreateItem,
     readItem: mockReadItem,
     updateItem: mockUpdateItem,
+    deleteItem: mockDeleteItem,
 }
 
 describe('Item Service', () => {
@@ -43,5 +45,11 @@ describe('Item Service', () => {
         const description = 'Batata frita média'
         itemService.updateItem(id, { description })
         expect(mockUpdateItem).toHaveBeenCalledWith(id, { description })
+    })
+
+    it('should call repository to delete item', () => {
+        const id = '123'
+        itemService.deleteItem(id)
+        expect(mockDeleteItem).toHaveBeenCalledWith(id)
     })
 })
