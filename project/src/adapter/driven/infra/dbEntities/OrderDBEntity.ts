@@ -10,11 +10,12 @@ import {
 import { Status } from '../../../../core/domain/valueObjects/Status'
 import { ItemDBEntity } from './ItemDBEntity'
 import { ClientEntity } from './ClientEntity'
+import { ID } from '../../../../core/domain/valueObjects/ID'
 
 @Entity({ name: 'orders' })
 export class OrderDBEntity extends BaseEntity {
     @PrimaryGeneratedColumn('uuid')
-    id: string
+    id: ID
 
     @Column()
     name: string

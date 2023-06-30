@@ -5,13 +5,17 @@ import ItemController from '../ItemController'
 
 const mockPostItem = jest.fn()
 const mockGetItem = jest.fn()
+const mockUpdateItem = jest.fn()
+
 const mockUseCases: ItemUseCases = {
     postItem: mockPostItem,
     getItem: mockGetItem,
+    updateItem: mockUpdateItem,
 }
 
 const mockResponse = {
     json: jest.fn(),
+    status: jest.fn(),
 } as unknown as Response
 
 describe('ItemController', () => {
@@ -23,18 +27,18 @@ describe('ItemController', () => {
     }
 
     const itemController = new ItemController(mockUseCases)
-    it('should post an item', () => {
+    it('should call use cases to post an item', () => {
         itemController.postItem({ body: { ...item } } as Request, mockResponse)
 
         expect(mockPostItem).toHaveBeenCalledWith(item)
     })
 
-    it('should get all items', () => {
+    it('should call use cases to get all items', () => {
         itemController.getItem({ query: {} } as Request, mockResponse)
         expect(mockGetItem).toHaveBeenCalledWith({})
     })
 
-    it('should get items by id', () => {
+    it('should call use cases to get items by id', () => {
         const id = '123'
         itemController.getItem(
             { query: { id } } as unknown as Request,
@@ -42,5 +46,17 @@ describe('ItemController', () => {
         )
 
         expect(mockGetItem).toHaveBeenCalledWith({ id })
+    })
+
+    it('should call use cases to update an item', () => {
+        const id = '123'
+        const description = 'Batata Frita Média'
+
+        itemController.patchItem(
+            { params: { id }, body: { description } } as unknown as Request,
+            mockResponse
+        )
+
+        expect(mockUpdateItem).toHaveBeenCalledWith(id, { description })
     })
 })

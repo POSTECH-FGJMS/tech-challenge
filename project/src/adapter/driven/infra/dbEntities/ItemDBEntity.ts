@@ -1,10 +1,11 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm'
 import { Category } from '../../../../core/domain/valueObjects/Category'
+import { ID } from '../../../../core/domain/valueObjects/ID'
 
 @Entity({ name: 'items' })
 export class ItemDBEntity extends BaseEntity {
     @PrimaryGeneratedColumn('uuid')
-    id: string
+    id: ID
 
     @Column()
     name: string

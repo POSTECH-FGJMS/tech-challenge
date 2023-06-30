@@ -21,4 +21,10 @@ export default class ItemController {
         const item = await this.itemUseCases.postItem({ ...request.body })
         response.json(item)
     }
+
+    public async patchItem(request: Request, response: Response) {
+        const { id } = request.params
+        await this.itemUseCases.updateItem(id, request.body)
+        response.json()
+    }
 }

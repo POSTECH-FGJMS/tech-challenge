@@ -18,4 +18,8 @@ export default class ItemDBRepository implements ItemRepository {
     public async readItem(itemValues: ItemRead) {
         return await this.repository.find({ where: itemValues })
     }
+
+    public async updateItem(itemId: string, itemValues: ItemRead) {
+        await this.repository.update(itemId, itemValues)
+    }
 }

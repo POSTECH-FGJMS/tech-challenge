@@ -1,9 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm'
+import { ID } from '../../../../core/domain/valueObjects/ID'
 
 @Entity({ name: 'clients' })
 export class ClientEntity extends BaseEntity {
     @PrimaryGeneratedColumn('uuid')
-    id: string
+    id: ID
 
     @Column({ nullable: true })
     name?: string

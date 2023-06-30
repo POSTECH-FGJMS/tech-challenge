@@ -1,3 +1,5 @@
+import { ID } from '../valueObjects/ID'
+
 export default interface IEntity {
-    id: string
+    id: ID
 }
