@@ -19,7 +19,6 @@ describe('ItemDBRepository', () => {
         description: 'Batata Frita',
         price: '10.99',
         category: 'Acompanhamento',
-        orderId: '1',
     }
 
     const itemDBRepository = new ItemDBRepository()

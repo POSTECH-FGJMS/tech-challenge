@@ -1,26 +1,14 @@
+import { Status } from '../valueObjects/Status'
+import { Client } from './Client'
 import IEntity from './IEntity'
+import { Item } from './Item'
 
-export default class Order implements IEntity {
-    id: string
+export interface Order {
     name: string
     description: string
-    price: string
-    status: string
-    clientId: number
-
-    constructor(
-        id: string,
-        name: string,
-        description: string,
-        price: string,
-        status: string,
-        clientId: number
-    ) {
-        this.id = id
-        this.name = name
-        this.description = description
-        this.price = price
-        this.status = status
-        this.clientId = clientId
-    }
+    status: Status
+    items: Item[]
+    client: Client
 }
+
+export type OrderEntity = Order & IEntity

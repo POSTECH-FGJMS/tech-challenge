@@ -1,5 +1,5 @@
 import { Item } from '../../../domain/entities/Item'
-import ItemRepository from '../../dependencies/ItemRepository'
+import ItemRepository from '../../../domain/repositories/ItemRepository'
 import ItemService from '../ItemService'
 
 const mockCreate = jest.fn()
@@ -15,7 +15,6 @@ describe('Item Service', () => {
         description: 'Batata Frita',
         price: '10.99',
         category: 'Acompanhamento',
-        orderId: '1',
     }
 
     const itemService = new ItemService(mockRepository)

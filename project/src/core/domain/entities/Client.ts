@@ -6,4 +6,4 @@ export interface Client {
 }
 
 export type ClientEntity = Client & IEntity
-export type ClientRead = Partial<Client & IEntity> 
+export type ClientRead = Partial<Client & IEntity>

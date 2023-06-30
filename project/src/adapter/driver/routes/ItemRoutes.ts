@@ -10,7 +10,13 @@ const itemDBRepository = new ItemDBRepository()
 const itemService = new ItemService(itemDBRepository)
 const itemController = new ItemController(itemService)
 
-router.post('/', asyncHandler((req, res) => itemController.postItem(req, res)))
-router.get('/', asyncHandler((req, res) => itemController.getAll(req, res)))
+router.post(
+    '/',
+    asyncHandler((req, res) => itemController.postItem(req, res))
+)
+router.get(
+    '/',
+    asyncHandler((req, res) => itemController.getAll(req, res))
+)
 
 export default router

@@ -10,7 +10,13 @@ const clientRepository = new ClientRepository()
 const clientUseCase = new ClientUseCase(clientRepository)
 const clientController = new ClientController(clientUseCase)
 
-router.get('/', asyncHandler((req, res) => clientController.getUser(req, res)))
-router.post('/', asyncHandler((req, res) => clientController.postUser(req, res)))
+router.get(
+    '/',
+    asyncHandler((req, res) => clientController.getUser(req, res))
+)
+router.post(
+    '/',
+    asyncHandler((req, res) => clientController.postUser(req, res))
+)
 
 export default router

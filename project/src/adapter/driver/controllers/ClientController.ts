@@ -7,7 +7,12 @@ export class ClientController {
 
     public async getUser(request: Request, response: Response) {
         const { id, name, email, cpf } = request.query
-        const clients = await this.clientUseCase.getClient({ id, name, email, cpf } as ClientRead)
+        const clients = await this.clientUseCase.getClient({
+            id,
+            name,
+            email,
+            cpf,
+        } as ClientRead)
 
         response.json(clients)
     }

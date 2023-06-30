@@ -2,6 +2,7 @@ import 'reflect-metadata'
 import { DataSource } from 'typeorm'
 import { ClientEntity } from '../dbEntities/ClientEntity'
 import { ItemDBEntity } from '../dbEntities/ItemDBEntity'
+import { OrderDBEntity } from '../dbEntities/OrderDBEntity'
 
 export const AppDataSource = new DataSource({
     type: 'postgres',
@@ -12,7 +13,7 @@ export const AppDataSource = new DataSource({
     database: 'lanchonete',
     synchronize: true,
     logging: true,
-    entities: [ClientEntity, ItemDBEntity],
+    entities: [ClientEntity, ItemDBEntity, OrderDBEntity],
     subscribers: [],
     migrations: [],
 })

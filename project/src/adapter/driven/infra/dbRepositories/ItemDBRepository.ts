@@ -1,5 +1,5 @@
 import { Repository } from 'typeorm'
-import ItemRepository from '../../../../core/application/dependencies/ItemRepository'
+import ItemRepository from '../../../../core/domain/repositories/ItemRepository'
 import { Item } from '../../../../core/domain/entities/Item'
 import { ItemDBEntity } from '../dbEntities/ItemDBEntity'
 import { AppDataSource } from '../orm/TypeOrm'

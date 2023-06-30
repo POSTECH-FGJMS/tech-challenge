@@ -1,4 +1,4 @@
-import { Item, ItemEntity } from '../../domain/entities/Item'
+import { Item, ItemEntity } from '../entities/Item'
 
 export default interface ItemRepository {
     create(item: Item): Promise<ItemEntity>
