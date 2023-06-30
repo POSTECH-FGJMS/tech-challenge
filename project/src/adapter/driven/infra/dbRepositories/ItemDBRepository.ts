@@ -1,6 +1,6 @@
 import { Repository } from 'typeorm'
 import ItemRepository from '../../../../core/domain/repositories/ItemRepository'
-import { Item } from '../../../../core/domain/entities/Item'
+import { Item, ItemRead } from '../../../../core/domain/entities/Item'
 import { ItemDBEntity } from '../dbEntities/ItemDBEntity'
 import { AppDataSource } from '../orm/TypeOrm'
 
@@ -11,11 +11,11 @@ export default class ItemDBRepository implements ItemRepository {
         this.repository = AppDataSource.getRepository(ItemDBEntity)
     }
 
-    public async create(item: Item) {
+    public async createItem(item: Item) {
         return await this.repository.save(item)
     }
 
-    public async getAll() {
-        return await this.repository.find()
+    public async readItem(itemValues: ItemRead) {
+        return await this.repository.find({ where: itemValues })
     }
 }

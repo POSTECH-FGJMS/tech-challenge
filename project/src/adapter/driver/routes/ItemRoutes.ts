@@ -16,7 +16,7 @@ router.post(
 )
 router.get(
     '/',
-    asyncHandler((req, res) => itemController.getAll(req, res))
+    asyncHandler((req, res) => itemController.getItem(req, res))
 )
 
 export default router

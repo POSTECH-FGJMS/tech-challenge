@@ -3,11 +3,11 @@ import ItemUseCases from '../../../../core/application/usecases/ItemUseCases'
 import { Item } from '../../../../core/domain/entities/Item'
 import ItemController from '../ItemController'
 
-const mockAdd = jest.fn()
-const mockGetAll = jest.fn()
+const mockPostItem = jest.fn()
+const mockGetItem = jest.fn()
 const mockUseCases: ItemUseCases = {
-    add: mockAdd,
-    getAll: mockGetAll,
+    postItem: mockPostItem,
+    getItem: mockGetItem,
 }
 
 const mockResponse = {
@@ -23,14 +23,24 @@ describe('ItemController', () => {
     }
 
     const itemController = new ItemController(mockUseCases)
-    it('should add an item', () => {
+    it('should post an item', () => {
         itemController.postItem({ body: { ...item } } as Request, mockResponse)
 
-        expect(mockAdd).toHaveBeenCalledWith(item)
+        expect(mockPostItem).toHaveBeenCalledWith(item)
     })
 
     it('should get all items', () => {
-        itemController.getAll({} as Request, mockResponse)
-        expect(mockGetAll).toHaveBeenCalled()
+        itemController.getItem({ query: {} } as Request, mockResponse)
+        expect(mockGetItem).toHaveBeenCalledWith({})
+    })
+
+    it('should get items by id', () => {
+        const id = '123'
+        itemController.getItem(
+            { query: { id } } as unknown as Request,
+            mockResponse
+        )
+
+        expect(mockGetItem).toHaveBeenCalledWith({ id })
     })
 })

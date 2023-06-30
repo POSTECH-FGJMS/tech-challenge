@@ -1,6 +1,6 @@
-import { Item, ItemEntity } from '../../domain/entities/Item'
+import { Item, ItemEntity, ItemRead } from '../../domain/entities/Item'
 
 export default interface ItemUseCases {
-    add(item: Item): Promise<ItemEntity>
-    getAll(): Promise<ItemEntity[]>
+    postItem(item: Item): Promise<ItemEntity>
+    getItem(itemValues: ItemRead): Promise<ItemEntity[]>
 }

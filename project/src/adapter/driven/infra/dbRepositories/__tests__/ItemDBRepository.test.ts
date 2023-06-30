@@ -23,12 +23,18 @@ describe('ItemDBRepository', () => {
 
     const itemDBRepository = new ItemDBRepository()
     it('should create an item', () => {
-        itemDBRepository.create(item)
+        itemDBRepository.createItem(item)
         expect(mockSave).toHaveBeenCalledWith(item)
     })
 
     it('should get all items', () => {
-        itemDBRepository.getAll()
-        expect(mockFind).toHaveBeenCalled()
+        itemDBRepository.readItem({})
+        expect(mockFind).toHaveBeenCalledWith({ where: {} })
+    })
+
+    it('should get item by query id', () => {
+        const id = '123'
+        itemDBRepository.readItem({ id })
+        expect(mockFind).toHaveBeenCalledWith({ where: { id } })
     })
 })

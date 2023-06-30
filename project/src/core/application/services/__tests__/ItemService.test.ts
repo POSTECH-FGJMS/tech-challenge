@@ -2,11 +2,11 @@ import { Item } from '../../../domain/entities/Item'
 import ItemRepository from '../../../domain/repositories/ItemRepository'
 import ItemService from '../ItemService'
 
-const mockCreate = jest.fn()
-const mockGetAll = jest.fn()
+const mockCreateItem = jest.fn()
+const mockReadItem = jest.fn()
 const mockRepository: ItemRepository = {
-    create: mockCreate,
-    getAll: mockGetAll,
+    createItem: mockCreateItem,
+    readItem: mockReadItem,
 }
 
 describe('Item Service', () => {
@@ -19,13 +19,19 @@ describe('Item Service', () => {
 
     const itemService = new ItemService(mockRepository)
     it('Should add an Item', () => {
-        itemService.add(item)
+        itemService.postItem(item)
 
-        expect(mockCreate).toHaveBeenCalledWith(item)
+        expect(mockCreateItem).toHaveBeenCalledWith(item)
     })
 
     it('should get all items', () => {
-        itemService.getAll()
-        expect(mockGetAll).toHaveBeenCalled()
+        itemService.getItem({})
+        expect(mockReadItem).toHaveBeenCalledWith({})
+    })
+
+    it('should get items by id', () => {
+        const id = '123'
+        itemService.getItem({ id })
+        expect(mockReadItem).toHaveBeenCalledWith({ id })
     })
 })

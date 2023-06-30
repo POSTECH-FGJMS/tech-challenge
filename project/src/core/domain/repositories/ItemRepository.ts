@@ -1,6 +1,6 @@
-import { Item, ItemEntity } from '../entities/Item'
+import { Item, ItemEntity, ItemRead } from '../entities/Item'
 
 export default interface ItemRepository {
-    create(item: Item): Promise<ItemEntity>
-    getAll(): Promise<ItemEntity[]>
+    createItem(item: Item): Promise<ItemEntity>
+    readItem(itemValues: ItemRead): Promise<ItemEntity[]>
 }

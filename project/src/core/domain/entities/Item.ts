@@ -8,3 +8,4 @@ export interface Item {
 }
 
 export type ItemEntity = Item & IEntity
+export type ItemRead = Partial<ItemEntity>
