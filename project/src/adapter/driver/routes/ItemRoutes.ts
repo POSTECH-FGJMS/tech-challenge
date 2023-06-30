@@ -9,22 +9,7 @@ const itemDBRepository = new ItemDBRepository()
 const itemService = new ItemService(itemDBRepository)
 const itemController = new ItemController(itemService)
 
-router
-    .post('/', async (req, res) => {
-        try {
-            const result = await itemController.postItem(req)
-            res.json(result)
-        } catch (error) {
-            res.status(500).json({ error })
-        }
-    })
-    .get('/', async (req, res) => {
-        try {
-            const result = await itemController.getAll()
-            res.json(result)
-        } catch (error) {
-            res.status(500).json(error)
-        }
-    })
+router.post('/', (req, res) => itemController.postItem(req, res))
+router.get('/', (req, res) => itemController.getAll(req, res))
 
 export default router
