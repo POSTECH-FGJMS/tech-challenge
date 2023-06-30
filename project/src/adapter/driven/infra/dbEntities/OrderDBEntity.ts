@@ -9,7 +9,7 @@ import {
 } from 'typeorm'
 import { Status } from '../../../../core/domain/valueObjects/Status'
 import { ItemDBEntity } from './ItemDBEntity'
-import { ClientEntity } from './ClientEntity'
+import { ClientDBEntity } from './ClientDBEntity'
 import { ID } from '../../../../core/domain/valueObjects/ID'
 
 @Entity({ name: 'orders' })
@@ -34,7 +34,7 @@ export class OrderDBEntity extends BaseEntity {
     @JoinTable()
     items: ItemDBEntity[]
 
-    @OneToOne(() => ClientEntity)
+    @OneToOne(() => ClientDBEntity)
     @JoinTable()
-    client: ClientEntity
+    client: ClientDBEntity
 }

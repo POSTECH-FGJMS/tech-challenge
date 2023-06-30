@@ -1,14 +1,14 @@
 import { Repository } from 'typeorm'
-import { ClientEntity } from '../dbEntities/ClientEntity'
+import { ClientDBEntity } from '../dbEntities/ClientDBEntity'
 import { AppDataSource } from '../orm/TypeOrm'
-import { IClientRepository } from '../../../../core/domain/repositories/IClientRepository'
+import { ClientRepository } from '../../../../core/domain/repositories/ClientRepository'
 import { Client, ClientRead } from '../../../../core/domain/entities/Client'
 
-export class ClientRepository implements IClientRepository {
-    private readonly repository: Repository<ClientEntity>
+export class ClientDBRepository implements ClientRepository {
+    private readonly repository: Repository<ClientDBEntity>
 
     constructor() {
-        this.repository = AppDataSource.getRepository(ClientEntity)
+        this.repository = AppDataSource.getRepository(ClientDBEntity)
     }
 
     public async createClient(client: Client) {

@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm'
 import { ID } from '../../../../core/domain/valueObjects/ID'
 
 @Entity({ name: 'clients' })
-export class ClientEntity extends BaseEntity {
+export class ClientDBEntity extends BaseEntity {
     @PrimaryGeneratedColumn('uuid')
     id: ID
 

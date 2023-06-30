@@ -1,9 +1,9 @@
-import { IClientUseCase } from '../interfaces/IClientUseCase'
-import { IClientRepository } from '../../domain/repositories/IClientRepository'
+import { ClientUseCases } from '../usecases/ClientUseCases'
+import { ClientRepository } from '../../domain/repositories/ClientRepository'
 import { Client, ClientRead } from '../../domain/entities/Client'
 
-export class ClientUseCase implements IClientUseCase {
-    constructor(private readonly clientRepository: IClientRepository) {}
+export class ClientUseCaseImpl implements ClientUseCases {
+    constructor(private readonly clientRepository: ClientRepository) {}
 
     public async postClient(client: Client) {
         return await this.clientRepository.createClient(client)

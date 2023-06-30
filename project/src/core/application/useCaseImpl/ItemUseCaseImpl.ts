@@ -2,7 +2,7 @@ import { Item, ItemEntity, ItemRead } from '../../domain/entities/Item'
 import ItemUseCases from '../usecases/ItemUseCases'
 import ItemRepository from '../../domain/repositories/ItemRepository'
 
-export default class ItemService implements ItemUseCases {
+export default class ItemUseCaseImpl implements ItemUseCases {
     constructor(private readonly repository: ItemRepository) {}
 
     public async postItem(item: Item) {

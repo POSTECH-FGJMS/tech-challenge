@@ -1,9 +1,9 @@
 import { Request, Response } from 'express'
-import { IClientUseCase } from '../../../core/application/interfaces/IClientUseCase'
+import { ClientUseCases } from '../../../core/application/usecases/ClientUseCases'
 import { ClientRead } from '../../../core/domain/entities/Client'
 
 export class ClientController {
-    constructor(private readonly clientUseCase: IClientUseCase) {}
+    constructor(private readonly clientUseCase: ClientUseCases) {}
 
     public async getUser(request: Request, response: Response) {
         const { id, name, email, cpf } = request.query

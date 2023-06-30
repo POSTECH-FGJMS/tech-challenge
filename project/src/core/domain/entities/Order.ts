@@ -1,6 +1,6 @@
 import { Status } from '../valueObjects/Status'
 import { Client } from './Client'
-import IEntity from './IEntity'
+import Entity from './Entity'
 import { Item } from './Item'
 
 export interface Order {
@@ -11,4 +11,4 @@ export interface Order {
     client: Client
 }
 
-export type OrderEntity = Order & IEntity
+export type OrderEntity = Order & Entity

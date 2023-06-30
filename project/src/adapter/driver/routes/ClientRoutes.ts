@@ -1,14 +1,14 @@
 import express from 'express'
-import { ClientUseCase } from '../../../core/application/usecases/ClientUseCase'
-import { ClientRepository } from '../../driven/infra/dbRepositories/ClientRepository'
+import { ClientUseCaseImpl } from '../../../core/application/useCaseImpl/ClientUseCaseImpl'
+import { ClientDBRepository } from '../../driven/infra/dbRepositories/ClientDBRepository'
 import { ClientController } from '../controllers/ClientController'
 import { asyncHandler } from '../error/AsyncHandler'
 
 const router = express.Router()
 
-const clientRepository = new ClientRepository()
-const clientUseCase = new ClientUseCase(clientRepository)
-const clientController = new ClientController(clientUseCase)
+const clientRepository = new ClientDBRepository()
+const clientUseCaseImpl = new ClientUseCaseImpl(clientRepository)
+const clientController = new ClientController(clientUseCaseImpl)
 
 router.get(
     '/',

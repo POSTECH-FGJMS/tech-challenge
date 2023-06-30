@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 import { DataSource } from 'typeorm'
-import { ClientEntity } from '../dbEntities/ClientEntity'
+import { ClientDBEntity } from '../dbEntities/ClientDBEntity'
 import { ItemDBEntity } from '../dbEntities/ItemDBEntity'
 import { OrderDBEntity } from '../dbEntities/OrderDBEntity'
 
@@ -13,7 +13,7 @@ export const AppDataSource = new DataSource({
     database: 'lanchonete',
     synchronize: true,
     logging: true,
-    entities: [ClientEntity, ItemDBEntity, OrderDBEntity],
+    entities: [ClientDBEntity, ItemDBEntity, OrderDBEntity],
     subscribers: [],
     migrations: [],
 })

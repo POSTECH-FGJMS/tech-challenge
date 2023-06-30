@@ -1,5 +1,5 @@
 import { Category } from '../valueObjects/Category'
-import IEntity from './IEntity'
+import Entity from './Entity'
 export interface Item {
     name: string
     description: string
@@ -7,5 +7,5 @@ export interface Item {
     category: Category
 }
 
-export type ItemEntity = Item & IEntity
+export type ItemEntity = Item & Entity
 export type ItemRead = Partial<ItemEntity>
