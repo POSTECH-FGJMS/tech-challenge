@@ -1,5 +1,6 @@
-import { Order, OrderEntity } from '../../domain/entities/Order'
+import { Order, OrderEntity, OrderRead } from '../../domain/entities/Order'
 import OrderRepository from '../../domain/repositories/OrderRepository'
+import { ID } from '../../domain/valueObjects/ID'
 import OrderUseCases from '../usecases/OrderUseCases'
 
 export class OrderUseCaseImpl implements OrderUseCases {
@@ -11,5 +12,9 @@ export class OrderUseCaseImpl implements OrderUseCases {
 
     public async getOrders(orderValues: Partial<OrderEntity>) {
         return await this.repository.readOrders(orderValues)
+    }
+
+    public async updateOrder(orderId: ID, orderValues: OrderRead) {
+        return await this.repository.updateOrders(orderId, orderValues)
     }
 }

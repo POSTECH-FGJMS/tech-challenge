@@ -1,9 +1,10 @@
 const mockSave = jest.fn()
 const mockFind = jest.fn()
+const mockUpdate = jest.fn()
 
 import { ClientEntity } from '../../../../core/domain/entities/Client'
 import { ItemEntity } from '../../../../core/domain/entities/Item'
-import { Order } from '../../../../core/domain/entities/Order'
+import { Order, OrderRead } from '../../../../core/domain/entities/Order'
 import app from '../../config/app'
 import request from 'supertest'
 
@@ -12,6 +13,7 @@ jest.mock('../../../driven/infra/orm/TypeOrm', () => ({
         getRepository: () => ({
             save: mockSave,
             find: mockFind,
+            update: mockUpdate,
         }),
     },
 }))
@@ -66,5 +68,14 @@ describe('ItemRoutes', () => {
 
         const result = await request(app).get('/order').expect(200)
         expect(result.body).toStrictEqual([{ id: 'orderId', ...order }])
+    })
+
+    it('should update an order status successfully', async () => {
+        const orderChanges: OrderRead = {
+            status: 'Em preparação',
+        }
+        mockUpdate.mockImplementation(() => Promise.resolve())
+
+        await request(app).patch('/order/123').send(orderChanges).expect(200)
     })
 })

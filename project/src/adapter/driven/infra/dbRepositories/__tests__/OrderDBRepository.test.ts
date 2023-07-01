@@ -1,6 +1,6 @@
 import { ClientEntity } from '../../../../../core/domain/entities/Client'
 import { ItemEntity } from '../../../../../core/domain/entities/Item'
-import { Order } from '../../../../../core/domain/entities/Order'
+import { Order, OrderRead } from '../../../../../core/domain/entities/Order'
 import { OrderDBRepository } from '../OrderDBRepository'
 
 const mockSave = jest.fn()
@@ -37,14 +37,19 @@ describe('OrderDBRepository', () => {
 
     const orderDBRepository = new OrderDBRepository()
 
-    it('should call typeorm to save an item', () => {
-        orderDBRepository.createOrder(order)
+    beforeEach(() => {
+        mockSave.mockClear()
+        mockFind.mockClear()
+    })
+
+    it('should call typeorm to save an order', async () => {
+        await orderDBRepository.createOrder(order)
         expect(mockSave).toHaveBeenCalledWith(order)
     })
 
-    it('should call typeorm to get an item', () => {
+    it('should call typeorm to get an order', async () => {
         const id = '123'
-        orderDBRepository.readOrders({ id })
+        await orderDBRepository.readOrders({ id })
         expect(mockFind).toHaveBeenCalledWith({
             where: { id },
             relations: {
@@ -52,5 +57,15 @@ describe('OrderDBRepository', () => {
                 client: true,
             },
         })
+    })
+
+    it('should call typeorm to update an order', async () => {
+        const id = '123'
+        const newValues: OrderRead = {
+            status: 'Em preparação',
+        }
+
+        await orderDBRepository.updateOrders(id, newValues)
+        expect(mockSave).toHaveBeenCalledWith({ id, ...newValues })
     })
 })

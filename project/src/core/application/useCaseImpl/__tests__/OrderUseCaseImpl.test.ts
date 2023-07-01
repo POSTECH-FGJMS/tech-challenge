@@ -1,15 +1,17 @@
 import { ClientEntity } from '../../../domain/entities/Client'
 import { ItemEntity } from '../../../domain/entities/Item'
-import { Order } from '../../../domain/entities/Order'
+import { Order, OrderRead } from '../../../domain/entities/Order'
 import OrderRepository from '../../../domain/repositories/OrderRepository'
 import { OrderUseCaseImpl } from '../OrderUseCaseImpl'
 
 const mockCreateOrder = jest.fn()
 const mockReadOrders = jest.fn()
+const mockUpdateOrder = jest.fn()
 
 const mockRepository: OrderRepository = {
     createOrder: mockCreateOrder,
     readOrders: mockReadOrders,
+    updateOrders: mockUpdateOrder,
 }
 
 describe('OrderUseCaseImpl', () => {
@@ -43,5 +45,14 @@ describe('OrderUseCaseImpl', () => {
         await orderUseCaseImpl.getOrders({ id })
 
         expect(mockReadOrders).toHaveBeenCalledWith({ id })
+    })
+
+    it('should call repository to update an order', async () => {
+        const id = '123'
+        const newValues: OrderRead = { status: 'Em preparação' }
+
+        await orderUseCaseImpl.updateOrder(id, newValues)
+
+        expect(mockUpdateOrder).toHaveBeenCalledWith(id, newValues)
     })
 })

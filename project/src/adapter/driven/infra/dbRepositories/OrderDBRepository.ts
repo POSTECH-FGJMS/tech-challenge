@@ -24,4 +24,11 @@ export class OrderDBRepository implements OrderRepository {
             },
         })
     }
+
+    public async updateOrders(
+        orderId: string,
+        orderValues: Partial<OrderEntity>
+    ) {
+        await this.repository.save({ id: orderId, ...orderValues })
+    }
 }

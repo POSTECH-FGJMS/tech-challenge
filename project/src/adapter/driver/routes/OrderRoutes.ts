@@ -19,5 +19,9 @@ router
         '/',
         asyncHandler((req, res) => orderController.getOrder(req, res))
     )
+    .patch(
+        '/:id',
+        asyncHandler((req, res) => orderController.patchOrder(req, res))
+    )
 
 export default router

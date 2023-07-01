@@ -4,7 +4,7 @@ import Entity from './Entity'
 import { Item } from './Item'
 
 export interface Order {
-    status: Status
+    status?: Status
     items: Item[]
     client: Client
     createdAt?: Date
