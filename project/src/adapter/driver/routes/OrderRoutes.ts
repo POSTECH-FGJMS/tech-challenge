@@ -23,5 +23,9 @@ router
         '/:id',
         asyncHandler((req, res) => orderController.patchOrder(req, res))
     )
+    .delete(
+        '/:id',
+        asyncHandler((req, res) => orderController.deleteOrder(req, res))
+    )
 
 export default router

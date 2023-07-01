@@ -7,11 +7,13 @@ import { Status } from '../../../../core/domain/valueObjects/Status'
 const mockPostOrder = jest.fn()
 const mockGetOrders = jest.fn()
 const mockUpdateOrder = jest.fn()
+const mockDeleteOrder = jest.fn()
 
 const mockUseCases: OrderUseCases = {
     postOrder: mockPostOrder,
     getOrders: mockGetOrders,
     updateOrder: mockUpdateOrder,
+    deleteOrder: mockDeleteOrder,
 }
 
 const mockResponse = {
@@ -79,5 +81,15 @@ describe('OrderController', () => {
         expect(mockUpdateOrder).toHaveBeenCalledWith(id, {
             items: [{ id: items[0] }, { id: items[1] }],
         })
+    })
+
+    it('should call use cases to delete an order', async () => {
+        const id = '123'
+        await orderController.deleteOrder(
+            { params: { id } } as unknown as Request,
+            mockResponse
+        )
+
+        expect(mockDeleteOrder).toHaveBeenCalledWith(id)
     })
 })

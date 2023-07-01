@@ -5,12 +5,14 @@ import { OrderDBRepository } from '../OrderDBRepository'
 
 const mockSave = jest.fn()
 const mockFind = jest.fn()
+const mockDelete = jest.fn()
 
 jest.mock('../../orm/TypeOrm', () => ({
     AppDataSource: {
         getRepository: () => ({
             save: mockSave,
             find: mockFind,
+            delete: mockDelete,
         }),
     },
 }))
@@ -67,5 +69,12 @@ describe('OrderDBRepository', () => {
 
         await orderDBRepository.updateOrders(id, newValues)
         expect(mockSave).toHaveBeenCalledWith({ id, ...newValues })
+    })
+
+    it('should call typeorm to delete an order', async () => {
+        const id = '123'
+
+        await orderDBRepository.deleteOrder(id)
+        expect(mockDelete).toHaveBeenCalledWith(id)
     })
 })

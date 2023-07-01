@@ -1,6 +1,7 @@
 const mockSave = jest.fn()
 const mockFind = jest.fn()
 const mockUpdate = jest.fn()
+const mockDelete = jest.fn()
 
 import { ClientEntity } from '../../../../core/domain/entities/Client'
 import { ItemEntity } from '../../../../core/domain/entities/Item'
@@ -14,6 +15,7 @@ jest.mock('../../../driven/infra/orm/TypeOrm', () => ({
             save: mockSave,
             find: mockFind,
             update: mockUpdate,
+            delete: mockDelete,
         }),
     },
 }))
@@ -77,5 +79,12 @@ describe('ItemRoutes', () => {
         mockUpdate.mockImplementation(() => Promise.resolve())
 
         await request(app).patch('/order/123').send(orderChanges).expect(200)
+    })
+
+    it('should delete an order successfully', async () => {
+        const id = '123'
+        mockDelete.mockImplementation(() => Promise.resolve())
+
+        await request(app).delete(`/order/${id}`).expect(200)
     })
 })

@@ -26,4 +26,10 @@ export class OrderController {
         await this.orderUseCases.updateOrder(id, orderToUpdate)
         response.json()
     }
+
+    public async deleteOrder(request: Request, response: Response) {
+        const { id } = request.params
+        await this.orderUseCases.deleteOrder(id)
+        response.json()
+    }
 }

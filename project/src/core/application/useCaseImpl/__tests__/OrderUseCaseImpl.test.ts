@@ -7,11 +7,13 @@ import { OrderUseCaseImpl } from '../OrderUseCaseImpl'
 const mockCreateOrder = jest.fn()
 const mockReadOrders = jest.fn()
 const mockUpdateOrder = jest.fn()
+const mockDeleteOrder = jest.fn()
 
 const mockRepository: OrderRepository = {
     createOrder: mockCreateOrder,
     readOrders: mockReadOrders,
     updateOrders: mockUpdateOrder,
+    deleteOrder: mockDeleteOrder,
 }
 
 describe('OrderUseCaseImpl', () => {
@@ -54,5 +56,13 @@ describe('OrderUseCaseImpl', () => {
         await orderUseCaseImpl.updateOrder(id, newValues)
 
         expect(mockUpdateOrder).toHaveBeenCalledWith(id, newValues)
+    })
+
+    it('should call repository to delete an order', async () => {
+        const id = '123'
+
+        await orderUseCaseImpl.deleteOrder(id)
+
+        expect(mockDeleteOrder).toHaveBeenCalledWith(id)
     })
 })

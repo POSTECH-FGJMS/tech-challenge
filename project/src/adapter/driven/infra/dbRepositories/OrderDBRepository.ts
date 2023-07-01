@@ -31,4 +31,8 @@ export class OrderDBRepository implements OrderRepository {
     ) {
         await this.repository.save({ id: orderId, ...orderValues })
     }
+
+    public async deleteOrder(orderId: string) {
+        await this.repository.delete(orderId)
+    }
 }

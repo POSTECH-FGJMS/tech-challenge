@@ -5,4 +5,5 @@ export default interface OrderUseCases {
     postOrder(order: Order): Promise<OrderEntity>
     getOrders(orderValues: OrderRead): Promise<OrderEntity[]>
     updateOrder(orderId: ID, orderValues: OrderRead): Promise<void>
+    deleteOrder(orderId: ID): Promise<void>
 }

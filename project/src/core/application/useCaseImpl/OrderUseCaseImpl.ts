@@ -17,4 +17,8 @@ export class OrderUseCaseImpl implements OrderUseCases {
     public async updateOrder(orderId: ID, orderValues: OrderRead) {
         return await this.repository.updateOrders(orderId, orderValues)
     }
+
+    public async deleteOrder(orderId: ID) {
+        return await this.repository.deleteOrder(orderId)
+    }
 }
