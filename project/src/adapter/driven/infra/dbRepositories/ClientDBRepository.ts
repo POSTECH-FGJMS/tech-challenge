@@ -12,10 +12,10 @@ export class ClientDBRepository implements ClientRepository {
     }
 
     public async createClient(client: Client) {
-        return await this.repository.save(client)
+        return await this.repository.save(this.repository.create(client))
     }
 
-    public async readClient(params: ClientRead) {
+    public async readClients(params: ClientRead) {
         const { id, name, email, cpf } = params
         return await this.repository.find({ where: { id, name, email, cpf } })
     }

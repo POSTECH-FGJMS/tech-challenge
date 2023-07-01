@@ -1,15 +1,15 @@
 import { Item } from '../../../domain/entities/Item'
 import ItemRepository from '../../../domain/repositories/ItemRepository'
-import ItemUseCaseImpl from '../ItemUseCaseImpl'
+import { ItemUseCaseImpl } from '../ItemUseCaseImpl'
 
 const mockCreateItem = jest.fn()
-const mockReadItem = jest.fn()
+const mockReadItems = jest.fn()
 const mockUpdateItem = jest.fn()
 const mockDeleteItem = jest.fn()
 
 const mockRepository: ItemRepository = {
     createItem: mockCreateItem,
-    readItem: mockReadItem,
+    readItems: mockReadItems,
     updateItem: mockUpdateItem,
     deleteItem: mockDeleteItem,
 }
@@ -23,21 +23,21 @@ describe('ItemUseCaseImpl', () => {
     }
 
     const itemUseCaseImpl = new ItemUseCaseImpl(mockRepository)
-    it('Should add an Item', () => {
+    it('should call repository to create an Item', () => {
         itemUseCaseImpl.postItem(item)
 
         expect(mockCreateItem).toHaveBeenCalledWith(item)
     })
 
     it('should call reporitory with no parameters to get all items', () => {
-        itemUseCaseImpl.getItem({})
-        expect(mockReadItem).toHaveBeenCalledWith({})
+        itemUseCaseImpl.getItems({})
+        expect(mockReadItems).toHaveBeenCalledWith({})
     })
 
     it('should call repository with id to get items by id', () => {
         const id = '123'
-        itemUseCaseImpl.getItem({ id })
-        expect(mockReadItem).toHaveBeenCalledWith({ id })
+        itemUseCaseImpl.getItems({ id })
+        expect(mockReadItems).toHaveBeenCalledWith({ id })
     })
 
     it('should call repository to update item', () => {

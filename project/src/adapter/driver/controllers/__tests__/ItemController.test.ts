@@ -1,16 +1,16 @@
 import { Request, Response } from 'express'
 import ItemUseCases from '../../../../core/application/usecases/ItemUseCases'
 import { Item } from '../../../../core/domain/entities/Item'
-import ItemController from '../ItemController'
+import { ItemController } from '../ItemController'
 
 const mockPostItem = jest.fn()
-const mockGetItem = jest.fn()
+const mockGetItems = jest.fn()
 const mockUpdateItem = jest.fn()
 const mockDeleteItem = jest.fn()
 
 const mockUseCases: ItemUseCases = {
     postItem: mockPostItem,
-    getItem: mockGetItem,
+    getItems: mockGetItems,
     updateItem: mockUpdateItem,
     deleteItem: mockDeleteItem,
 }
@@ -36,18 +36,18 @@ describe('ItemController', () => {
     })
 
     it('should call use cases to get all items', () => {
-        itemController.getItem({ query: {} } as Request, mockResponse)
-        expect(mockGetItem).toHaveBeenCalledWith({})
+        itemController.getItems({ query: {} } as Request, mockResponse)
+        expect(mockGetItems).toHaveBeenCalledWith({})
     })
 
     it('should call use cases to get items by id', () => {
         const id = '123'
-        itemController.getItem(
+        itemController.getItems(
             { query: { id } } as unknown as Request,
             mockResponse
         )
 
-        expect(mockGetItem).toHaveBeenCalledWith({ id })
+        expect(mockGetItems).toHaveBeenCalledWith({ id })
     })
 
     it('should call use cases to update an item', () => {

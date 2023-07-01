@@ -12,7 +12,7 @@ const clientController = new ClientController(clientUseCaseImpl)
 
 router.get(
     '/',
-    asyncHandler((req, res) => clientController.getUser(req, res))
+    asyncHandler((req, res) => clientController.getUsers(req, res))
 )
 router.post(
     '/',

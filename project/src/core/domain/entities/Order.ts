@@ -4,11 +4,11 @@ import Entity from './Entity'
 import { Item } from './Item'
 
 export interface Order {
-    name: string
-    description: string
     status: Status
     items: Item[]
     client: Client
+    createdAt?: Date
 }
 
 export type OrderEntity = Order & Entity
+export type OrderRead = Partial<OrderEntity>

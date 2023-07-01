@@ -2,15 +2,15 @@ import { Item, ItemEntity, ItemRead } from '../../domain/entities/Item'
 import ItemUseCases from '../usecases/ItemUseCases'
 import ItemRepository from '../../domain/repositories/ItemRepository'
 
-export default class ItemUseCaseImpl implements ItemUseCases {
+export class ItemUseCaseImpl implements ItemUseCases {
     constructor(private readonly repository: ItemRepository) {}
 
     public async postItem(item: Item) {
         return await this.repository.createItem(item)
     }
 
-    public async getItem(itemValues: ItemRead): Promise<ItemEntity[]> {
-        return await this.repository.readItem(itemValues)
+    public async getItems(itemValues: ItemRead) {
+        return await this.repository.readItems(itemValues)
     }
 
     public async updateItem(itemId: string, itemValues: Partial<ItemEntity>) {
@@ -18,6 +18,6 @@ export default class ItemUseCaseImpl implements ItemUseCases {
     }
 
     public async deleteItem(itemId: string) {
-        return this.repository.deleteItem(itemId)
+        return await this.repository.deleteItem(itemId)
     }
 }

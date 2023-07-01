@@ -1,5 +1,5 @@
 import { Item } from '../../../../../core/domain/entities/Item'
-import ItemDBRepository from '../ItemDBRepository'
+import { ItemDBRepository } from '../ItemDBRepository'
 
 const mockSave = jest.fn()
 const mockFind = jest.fn()
@@ -26,19 +26,19 @@ describe('ItemDBRepository', () => {
     }
 
     const itemDBRepository = new ItemDBRepository()
-    it('should call typeorm to create an item', () => {
+    it('should call typeorm to save an item', () => {
         itemDBRepository.createItem(item)
         expect(mockSave).toHaveBeenCalledWith(item)
     })
 
     it('should call typeorm to get all items', () => {
-        itemDBRepository.readItem({})
+        itemDBRepository.readItems({})
         expect(mockFind).toHaveBeenCalledWith({ where: {} })
     })
 
     it('should call typeorm to get item by query id', () => {
         const id = '123'
-        itemDBRepository.readItem({ id })
+        itemDBRepository.readItems({ id })
         expect(mockFind).toHaveBeenCalledWith({ where: { id } })
     })
 

@@ -5,7 +5,7 @@ import { ItemDBEntity } from '../dbEntities/ItemDBEntity'
 import { AppDataSource } from '../orm/TypeOrm'
 import { ID } from '../../../../core/domain/valueObjects/ID'
 
-export default class ItemDBRepository implements ItemRepository {
+export class ItemDBRepository implements ItemRepository {
     private readonly repository: Repository<ItemDBEntity>
 
     constructor() {
@@ -16,7 +16,7 @@ export default class ItemDBRepository implements ItemRepository {
         return await this.repository.save(item)
     }
 
-    public async readItem(itemValues: ItemRead) {
+    public async readItems(itemValues: ItemRead) {
         return await this.repository.find({ where: itemValues })
     }
 

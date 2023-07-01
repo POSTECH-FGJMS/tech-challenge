@@ -1,10 +1,12 @@
 import {
     BaseEntity,
     Column,
+    CreateDateColumn,
     Entity,
+    JoinColumn,
     JoinTable,
     ManyToMany,
-    OneToOne,
+    ManyToOne,
     PrimaryGeneratedColumn,
 } from 'typeorm'
 import { Status } from '../../../../core/domain/valueObjects/Status'
@@ -17,12 +19,6 @@ export class OrderDBEntity extends BaseEntity {
     @PrimaryGeneratedColumn('uuid')
     id: ID
 
-    @Column()
-    name: string
-
-    @Column()
-    description: string
-
     @Column({
         type: 'enum',
         enum: ['Recebido', 'Em preparação', 'Pronto', 'Finalizado'],
@@ -34,7 +30,10 @@ export class OrderDBEntity extends BaseEntity {
     @JoinTable()
     items: ItemDBEntity[]
 
-    @OneToOne(() => ClientDBEntity)
-    @JoinTable()
+    @ManyToOne(() => ClientDBEntity)
+    @JoinColumn()
     client: ClientDBEntity
+
+    @CreateDateColumn()
+    createdAt: Date
 }

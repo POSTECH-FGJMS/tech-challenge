@@ -1,24 +1,17 @@
 import { Request, Response } from 'express'
 import { ClientUseCases } from '../../../core/application/usecases/ClientUseCases'
-import { ClientRead } from '../../../core/domain/entities/Client'
 
 export class ClientController {
     constructor(private readonly clientUseCase: ClientUseCases) {}
 
-    public async getUser(request: Request, response: Response) {
-        const { id, name, email, cpf } = request.query
-        const clients = await this.clientUseCase.getClient({
-            id,
-            name,
-            email,
-            cpf,
-        } as ClientRead)
+    public async getUsers(request: Request, response: Response) {
+        const clients = await this.clientUseCase.getClients(request.query)
 
         response.json(clients)
     }
 
     public async postUser(request: Request, response: Response) {
-        const client = await this.clientUseCase.postClient({ ...request.body })
+        const client = await this.clientUseCase.postClient(request.body)
 
         response.json(client)
     }

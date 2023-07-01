@@ -1,7 +1,7 @@
 import { Router } from 'express'
-import ItemUseCaseImpl from '../../../core/application/useCaseImpl/ItemUseCaseImpl'
-import ItemDBRepository from '../../driven/infra/dbRepositories/ItemDBRepository'
-import ItemController from '../controllers/ItemController'
+import { ItemUseCaseImpl } from '../../../core/application/useCaseImpl/ItemUseCaseImpl'
+import { ItemDBRepository } from '../../driven/infra/dbRepositories/ItemDBRepository'
+import { ItemController } from '../controllers/ItemController'
 import { asyncHandler } from '../error/AsyncHandler'
 
 const router = Router()
@@ -17,7 +17,7 @@ router
     )
     .get(
         '/',
-        asyncHandler((req, res) => itemController.getItem(req, res))
+        asyncHandler((req, res) => itemController.getItems(req, res))
     )
     .patch(
         '/:id',

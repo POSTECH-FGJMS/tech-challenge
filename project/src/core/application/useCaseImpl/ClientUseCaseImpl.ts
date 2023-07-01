@@ -9,7 +9,7 @@ export class ClientUseCaseImpl implements ClientUseCases {
         return await this.clientRepository.createClient(client)
     }
 
-    public async getClient(params: ClientRead) {
-        return await this.clientRepository.readClient(params)
+    public async getClients(params: ClientRead) {
+        return await this.clientRepository.readClients(params)
     }
 }
