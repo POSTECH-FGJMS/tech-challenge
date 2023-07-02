@@ -1,12 +1,35 @@
 # Lanchonete API
 
-## Rodando aplicação
+## Rodando a aplicação localmente
 
-#### Live reload
+Para executar a API da Lanchonete localmente, siga as etapas abaixo:
 
-`npm i`
-`npm start`
+### Instalação de dependências
 
-#### Containerized
+No diretório raiz do projeto, execute o seguinte comando para instalar as dependências necessárias:
 
-`npm run docker`
+```bash
+npm install
+```
+
+### Executando o servidor
+
+Após a instalação das dependências, execute o seguinte comando para iniciar o servidor:
+
+```bash
+npm run start
+```
+
+### Executando o servidor conteinerizado
+
+Use um desses comandos para iniciar a aplicação:
+
+```bash
+npm run docker
+```
+
+ou
+
+```bash
+docker compose up
+```
