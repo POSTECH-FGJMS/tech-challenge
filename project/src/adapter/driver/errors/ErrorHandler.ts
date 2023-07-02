@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
 import { HttpException } from './exeptions/HttpException';
+import { HttpStatus } from './exeptions/HttpStatus';
 
 export const errorHandler = (
     error: HttpException,
@@ -7,12 +8,13 @@ export const errorHandler = (
     res: Response,
     next: NextFunction
 ) => {
-    const { status, response } = error;
     console.error(error)
+    const errorStatus = error?.status || HttpStatus.INTERNAL_SERVER_ERROR
+    const errorResponse = error?.response || 'Internal Server Error'
 
-    res.status(status).send({
-        status,
-        body: response
+    res.status(errorStatus).send({
+        status: errorStatus,
+        body: errorResponse
     })
     next()
 }
