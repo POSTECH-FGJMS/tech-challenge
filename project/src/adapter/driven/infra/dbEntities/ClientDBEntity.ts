@@ -9,9 +9,9 @@ export class ClientDBEntity extends BaseEntity {
     @Column({ nullable: true })
     name?: string
 
-    @Column({ nullable: true })
+    @Column({ nullable: true, unique: true })
     email?: string
 
-    @Column({ nullable: true })
+    @Column({ nullable: true, unique: true })
     cpf?: string
 }
