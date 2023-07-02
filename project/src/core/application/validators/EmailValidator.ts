@@ -3,16 +3,16 @@ export interface EmailValidator {
 }
 
 export class EmailValidatorImpl implements EmailValidator {
-        public isValid(email: string): boolean {
-          if (!this.hasValidFormat(email)) {
-            return false;
-          }
-      
-          return true;
+    public isValid(email: string): boolean {
+        if (!this.hasValidFormat(email)) {
+            return false
         }
-      
-        private hasValidFormat(email: string): boolean {
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          return emailRegex.test(email);
-        }
-  }
+
+        return true
+    }
+
+    private hasValidFormat(email: string): boolean {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        return emailRegex.test(email)
+    }
+}

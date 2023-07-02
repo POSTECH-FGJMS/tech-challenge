@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
-import { HttpException } from './exeptions/HttpException';
-import { HttpStatus } from './exeptions/HttpStatus';
+import { HttpException } from './exeptions/HttpException'
+import { HttpStatus } from './exeptions/HttpStatus'
 
 export const errorHandler = (
     error: HttpException,
@@ -14,7 +14,7 @@ export const errorHandler = (
 
     res.status(errorStatus).send({
         status: errorStatus,
-        body: errorResponse
+        body: errorResponse,
     })
     next()
 }

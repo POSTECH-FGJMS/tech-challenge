@@ -10,10 +10,15 @@ import { EmailValidatorImpl } from '../../../core/application/validators/EmailVa
 const router = express.Router()
 
 const clientRepository = new ClientDBRepository()
-const nameValidator = new NameValidatorImpl();
-const emailValidator = new EmailValidatorImpl();
-const cpfValidator = new CpfValidatorImpl();
-const clientUseCaseImpl = new ClientUseCaseImpl(clientRepository, nameValidator, emailValidator, cpfValidator)
+const nameValidator = new NameValidatorImpl()
+const emailValidator = new EmailValidatorImpl()
+const cpfValidator = new CpfValidatorImpl()
+const clientUseCaseImpl = new ClientUseCaseImpl(
+    clientRepository,
+    nameValidator,
+    emailValidator,
+    cpfValidator
+)
 const clientController = new ClientController(clientUseCaseImpl)
 
 router.get(

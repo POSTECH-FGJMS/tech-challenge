@@ -34,6 +34,6 @@ module.exports = {
             },
         ],
         'jest/expect-expect': 'off',
-        "@typescript-eslint/no-explicit-any": "off"
+        '@typescript-eslint/no-explicit-any': 'off',
     },
 }
