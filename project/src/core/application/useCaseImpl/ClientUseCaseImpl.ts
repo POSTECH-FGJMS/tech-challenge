@@ -1,7 +1,7 @@
 import { ClientUseCases } from '../usecases/ClientUseCases'
 import { ClientRepository } from '../../domain/repositories/ClientRepository'
 import { Client, ClientRead } from '../../domain/entities/Client'
-import { BadRequestExeption } from '../../../adapter/driver/errors/exeptions/BadRequestExeption'
+import { BadRequestException } from '../../../adapter/driver/errors/exceptions/BadRequestException'
 import { CpfValidator } from '../validators/CpfValidator'
 import { EmailValidator } from '../validators/EmailValidator'
 import { NameValidator } from '../validators/NameValidator'
@@ -18,12 +18,12 @@ export class ClientUseCaseImpl implements ClientUseCases {
         const { name, email, cpf } = client
 
         if (name && !this.nameValidator.isValid(name)) {
-            throw new BadRequestExeption('name invalid')
+            throw new BadRequestException('name invalid')
         }
 
         if (email) {
             if (!this.emailValidator.isValid(email)) {
-                throw new BadRequestExeption('email invalid')
+                throw new BadRequestException('email invalid')
             }
 
             const clientExist = await this.clientRepository.readClients({
@@ -31,19 +31,19 @@ export class ClientUseCaseImpl implements ClientUseCases {
             })
 
             if (clientExist.length > 0) {
-                throw new BadRequestExeption('email already registered')
+                throw new BadRequestException('email already registered')
             }
         }
 
         if (cpf) {
             if (!this.cpfValidator.isValid(cpf)) {
-                throw new BadRequestExeption('cpf invalid')
+                throw new BadRequestException('cpf invalid')
             }
 
             const userExist = await this.clientRepository.readClients({ cpf })
 
             if (userExist.length > 0) {
-                throw new BadRequestExeption('cpf already registered')
+                throw new BadRequestException('cpf already registered')
             }
         }
 

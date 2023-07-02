@@ -1,5 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm'
-import { Category } from '../../../../core/domain/valueObjects/Category'
+import {
+    ALL_CATEGORIES,
+    Category,
+} from '../../../../core/domain/valueObjects/Category'
 import { ID } from '../../../../core/domain/valueObjects/ID'
 
 @Entity({ name: 'items' })
@@ -18,7 +21,7 @@ export class ItemDBEntity extends BaseEntity {
 
     @Column({
         type: 'enum',
-        enum: ['Lanche', 'Acompanhamento', 'Bebida', 'Sobremesa'],
+        enum: ALL_CATEGORIES,
     })
     category: Category
 }

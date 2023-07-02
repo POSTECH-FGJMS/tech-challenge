@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express'
-import { HttpException } from './exeptions/HttpException'
-import { HttpStatus } from './exeptions/HttpStatus'
+import { HttpException } from './exceptions/HttpException'
+import { HttpStatus } from './exceptions/HttpStatus'
 
 export const errorHandler = (
     error: HttpException,

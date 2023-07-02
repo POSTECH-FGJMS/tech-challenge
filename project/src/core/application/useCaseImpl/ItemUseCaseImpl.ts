@@ -1,11 +1,18 @@
 import { Item, ItemEntity, ItemRead } from '../../domain/entities/Item'
 import ItemUseCases from '../usecases/ItemUseCases'
 import ItemRepository from '../../domain/repositories/ItemRepository'
+import { isCategory } from '../../domain/valueObjects/Category'
+import { BadRequestException } from '../../../adapter/driver/errors/exceptions/BadRequestException'
 
 export class ItemUseCaseImpl implements ItemUseCases {
     constructor(private readonly repository: ItemRepository) {}
 
     public async postItem(item: Item) {
+        const { category } = item
+
+        if (!isCategory(category))
+            throw new BadRequestException('Category is invalid')
+
         return await this.repository.createItem(item)
     }
 

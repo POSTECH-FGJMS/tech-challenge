@@ -9,7 +9,7 @@ import {
     ManyToOne,
     PrimaryGeneratedColumn,
 } from 'typeorm'
-import { Status } from '../../../../core/domain/valueObjects/Status'
+import { ALL_STATUS, Status } from '../../../../core/domain/valueObjects/Status'
 import { ItemDBEntity } from './ItemDBEntity'
 import { ClientDBEntity } from './ClientDBEntity'
 import { ID } from '../../../../core/domain/valueObjects/ID'
@@ -21,7 +21,7 @@ export class OrderDBEntity extends BaseEntity {
 
     @Column({
         type: 'enum',
-        enum: ['Recebido', 'Em preparação', 'Pronto', 'Finalizado'],
+        enum: ALL_STATUS,
         default: 'Recebido',
     })
     status: Status

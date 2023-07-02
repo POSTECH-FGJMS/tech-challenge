@@ -1,3 +1,4 @@
+import { BadRequestException } from '../../../../adapter/driver/errors/exceptions/BadRequestException'
 import { Item } from '../../../domain/entities/Item'
 import ItemRepository from '../../../domain/repositories/ItemRepository'
 import { ItemUseCaseImpl } from '../ItemUseCaseImpl'
@@ -27,6 +28,19 @@ describe('ItemUseCaseImpl', () => {
         itemUseCaseImpl.postItem(item)
 
         expect(mockCreateItem).toHaveBeenCalledWith(item)
+    })
+
+    it('should throw a bad request if category is not valid', async () => {
+        const invalidItem = {
+            name: 'Batata',
+            description: 'Batata Frita',
+            price: 10.99,
+            category: 'invalid',
+        }
+
+        await expect(() =>
+            itemUseCaseImpl.postItem(invalidItem as Item)
+        ).rejects.toThrow(BadRequestException)
     })
 
     it('should call reporitory with no parameters to get all items', () => {

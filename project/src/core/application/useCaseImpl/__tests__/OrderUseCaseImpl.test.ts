@@ -1,3 +1,4 @@
+import { BadRequestException } from '../../../../adapter/driver/errors/exceptions/BadRequestException'
 import { ClientEntity } from '../../../domain/entities/Client'
 import { ItemEntity } from '../../../domain/entities/Item'
 import { Order, OrderRead } from '../../../domain/entities/Order'
@@ -56,6 +57,16 @@ describe('OrderUseCaseImpl', () => {
         await orderUseCaseImpl.updateOrder(id, newValues)
 
         expect(mockUpdateOrder).toHaveBeenCalledWith(id, newValues)
+    })
+
+    it('should throw a bad request if order status is invalid', async () => {
+        const invalidOrder = {
+            status: 'invalid',
+        }
+
+        await expect(() =>
+            orderUseCaseImpl.updateOrder('123', invalidOrder as OrderRead)
+        ).rejects.toThrow(BadRequestException)
     })
 
     it('should call repository to delete an order', async () => {
