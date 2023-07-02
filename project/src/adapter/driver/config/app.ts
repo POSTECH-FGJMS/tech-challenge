@@ -2,7 +2,7 @@ import express from 'express'
 import clientRoutes from '../routes/ClientRoutes'
 import itemRoutes from '../routes/ItemRoutes'
 import orderRoutes from '../routes/OrderRoutes'
-import { errorHandler } from '../error/ErrorHandler'
+import { errorHandler } from '../errors/ErrorHandler'
 
 const app = express()
 app.use(express.json())

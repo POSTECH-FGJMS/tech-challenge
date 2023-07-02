@@ -2,7 +2,7 @@ import express from 'express'
 import { ClientUseCaseImpl } from '../../../core/application/useCaseImpl/ClientUseCaseImpl'
 import { ClientDBRepository } from '../../driven/infra/dbRepositories/ClientDBRepository'
 import { ClientController } from '../controllers/ClientController'
-import { asyncHandler } from '../error/AsyncHandler'
+import { asyncHandler } from './AsyncHandler'
 
 const router = express.Router()
 

@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { ItemUseCaseImpl } from '../../../core/application/useCaseImpl/ItemUseCaseImpl'
 import { ItemDBRepository } from '../../driven/infra/dbRepositories/ItemDBRepository'
 import { ItemController } from '../controllers/ItemController'
-import { asyncHandler } from '../error/AsyncHandler'
+import { asyncHandler } from './AsyncHandler'
 
 const router = Router()
 
