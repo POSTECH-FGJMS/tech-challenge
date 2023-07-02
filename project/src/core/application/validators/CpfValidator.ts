@@ -4,15 +4,7 @@ export interface CpfValidator {
 
 export class CpfValidatorImpl implements CpfValidator {
     public isValid(cpf: string): boolean {
-        if (cpf.length !== 11) {
-            return false
-        }
-
-        if (!this.hasValidDigits(cpf)) {
-            return false
-        }
-
-        return true
+        return cpf.length === 11 && this.hasValidDigits(cpf)
     }
 
     private hasValidDigits(cpf: string): boolean {

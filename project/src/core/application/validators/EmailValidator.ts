@@ -4,11 +4,7 @@ export interface EmailValidator {
 
 export class EmailValidatorImpl implements EmailValidator {
     public isValid(email: string): boolean {
-        if (!this.hasValidFormat(email)) {
-            return false
-        }
-
-        return true
+        return !!this.hasValidFormat(email)
     }
 
     private hasValidFormat(email: string): boolean {

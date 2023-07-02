@@ -4,11 +4,7 @@ export interface NameValidator {
 
 export class NameValidatorImpl implements NameValidator {
     public isValid(name: string): boolean {
-        if (!this.hasValidCharacters(name)) {
-            return false
-        }
-
-        return true
+        return !!this.hasValidCharacters(name)
     }
 
     private hasValidCharacters(name: string): boolean {
