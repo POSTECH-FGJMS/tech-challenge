@@ -28,4 +28,8 @@ export class OrderUseCaseImpl implements OrderUseCases {
     public async deleteOrder(orderId: ID) {
         return await this.repository.deleteOrder(orderId)
     }
+
+    public async getQueue() {
+        return await this.repository.readQueue()
+    }
 }

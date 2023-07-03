@@ -87,4 +87,11 @@ describe('ItemRoutes', () => {
 
         await request(app).delete(`/order/${id}`).expect(200)
     })
+
+    it('should get queue of orders successfully', async () => {
+        mockFind.mockImplementation(() => Promise.resolve([order, order]))
+
+        const result = await request(app).get('/order/queue').expect(200)
+        expect(result.body).toStrictEqual([order, order])
+    })
 })

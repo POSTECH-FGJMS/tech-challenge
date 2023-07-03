@@ -32,4 +32,9 @@ export class OrderController {
         await this.orderUseCases.deleteOrder(id)
         response.json()
     }
+
+    public async getQueue(request: Request, response: Response) {
+        const result = await this.orderUseCases.getQueue()
+        response.json(result)
+    }
 }

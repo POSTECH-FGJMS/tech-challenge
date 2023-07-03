@@ -27,5 +27,9 @@ router
         '/:id',
         asyncHandler((req, res) => orderController.deleteOrder(req, res))
     )
+    .get(
+        '/queue',
+        asyncHandler((req, res) => orderController.getQueue(req, res))
+    )
 
 export default router

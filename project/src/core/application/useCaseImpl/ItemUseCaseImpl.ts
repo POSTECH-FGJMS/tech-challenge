@@ -10,7 +10,7 @@ export class ItemUseCaseImpl implements ItemUseCases {
     public async postItem(item: Item) {
         const { category } = item
 
-        if (!isCategory(category))
+        if (category && !isCategory(category))
             throw new BadRequestException('Category is invalid')
 
         return await this.repository.createItem(item)
@@ -21,6 +21,11 @@ export class ItemUseCaseImpl implements ItemUseCases {
     }
 
     public async updateItem(itemId: string, itemValues: Partial<ItemEntity>) {
+        const { category } = itemValues
+
+        if (category && !isCategory(category))
+            throw new BadRequestException('Category is invalid')
+
         return await this.repository.updateItem(itemId, itemValues)
     }
 

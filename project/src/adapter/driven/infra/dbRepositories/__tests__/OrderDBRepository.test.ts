@@ -77,4 +77,25 @@ describe('OrderDBRepository', () => {
         await orderDBRepository.deleteOrder(id)
         expect(mockDelete).toHaveBeenCalledWith(id)
     })
+
+    it('should call typeorm to get queue of orders', async () => {
+        await orderDBRepository.readQueue()
+        expect(mockFind).toHaveBeenCalledWith({
+            order: {
+                createdAt: 'ASC',
+            },
+            where: [
+                {
+                    status: 'Recebido',
+                },
+                {
+                    status: 'Em preparação',
+                },
+            ],
+            relations: {
+                items: true,
+                client: true,
+            },
+        })
+    })
 })

@@ -1,5 +1,5 @@
 import { BadRequestException } from '../../../../adapter/driver/errors/exceptions/BadRequestException'
-import { Item } from '../../../domain/entities/Item'
+import { Item, ItemRead } from '../../../domain/entities/Item'
 import ItemRepository from '../../../domain/repositories/ItemRepository'
 import { ItemUseCaseImpl } from '../ItemUseCaseImpl'
 
@@ -30,7 +30,7 @@ describe('ItemUseCaseImpl', () => {
         expect(mockCreateItem).toHaveBeenCalledWith(item)
     })
 
-    it('should throw a bad request if category is not valid', async () => {
+    it('should throw a bad request on post if category is not valid', async () => {
         const invalidItem = {
             name: 'Batata',
             description: 'Batata Frita',
@@ -59,6 +59,16 @@ describe('ItemUseCaseImpl', () => {
         const description = 'Batata frita média'
         itemUseCaseImpl.updateItem(id, { description })
         expect(mockUpdateItem).toHaveBeenCalledWith(id, { description })
+    })
+
+    it('should throw a bad request on update if category is not valid', async () => {
+        const invalidItem = {
+            category: 'invalid',
+        }
+
+        await expect(() =>
+            itemUseCaseImpl.updateItem('123', invalidItem as ItemRead)
+        ).rejects.toThrow(BadRequestException)
     })
 
     it('should call repository to delete item', () => {

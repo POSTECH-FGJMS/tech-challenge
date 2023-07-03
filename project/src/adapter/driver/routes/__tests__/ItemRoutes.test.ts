@@ -18,6 +18,12 @@ jest.mock('../../../driven/infra/orm/TypeOrm', () => ({
 }))
 
 describe('ItemRoutes', () => {
+    beforeEach(() => {
+        mockSave.mockClear()
+        mockFind.mockClear()
+        mockUpdate.mockClear()
+        mockDelete.mockClear()
+    })
     it('should create an item successfully', async () => {
         const item = {
             name: 'Batata Frita',

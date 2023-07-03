@@ -9,12 +9,14 @@ const mockCreateOrder = jest.fn()
 const mockReadOrders = jest.fn()
 const mockUpdateOrder = jest.fn()
 const mockDeleteOrder = jest.fn()
+const mockReadQueue = jest.fn()
 
 const mockRepository: OrderRepository = {
     createOrder: mockCreateOrder,
     readOrders: mockReadOrders,
     updateOrders: mockUpdateOrder,
     deleteOrder: mockDeleteOrder,
+    readQueue: mockReadQueue,
 }
 
 describe('OrderUseCaseImpl', () => {
@@ -75,5 +77,11 @@ describe('OrderUseCaseImpl', () => {
         await orderUseCaseImpl.deleteOrder(id)
 
         expect(mockDeleteOrder).toHaveBeenCalledWith(id)
+    })
+
+    it('should call repository to get a queue of orders', async () => {
+        await orderUseCaseImpl.getQueue()
+
+        expect(mockReadQueue).toHaveBeenCalled()
     })
 })

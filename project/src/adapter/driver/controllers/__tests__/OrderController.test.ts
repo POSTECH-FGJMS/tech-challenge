@@ -8,12 +8,14 @@ const mockPostOrder = jest.fn()
 const mockGetOrders = jest.fn()
 const mockUpdateOrder = jest.fn()
 const mockDeleteOrder = jest.fn()
+const mockGetQueue = jest.fn()
 
 const mockUseCases: OrderUseCases = {
     postOrder: mockPostOrder,
     getOrders: mockGetOrders,
     updateOrder: mockUpdateOrder,
     deleteOrder: mockDeleteOrder,
+    getQueue: mockGetQueue,
 }
 
 const mockResponse = {
@@ -91,5 +93,11 @@ describe('OrderController', () => {
         )
 
         expect(mockDeleteOrder).toHaveBeenCalledWith(id)
+    })
+
+    it('should call use cases to get queue of orders', async () => {
+        await orderController.getQueue({} as Request, mockResponse)
+
+        expect(mockGetQueue).toHaveBeenCalled()
     })
 })

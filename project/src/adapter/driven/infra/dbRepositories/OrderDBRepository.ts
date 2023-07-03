@@ -35,4 +35,24 @@ export class OrderDBRepository implements OrderRepository {
     public async deleteOrder(orderId: string) {
         await this.repository.delete(orderId)
     }
+
+    public async readQueue(): Promise<OrderEntity[]> {
+        return this.repository.find({
+            order: {
+                createdAt: 'ASC',
+            },
+            where: [
+                {
+                    status: 'Recebido',
+                },
+                {
+                    status: 'Em preparação',
+                },
+            ],
+            relations: {
+                items: true,
+                client: true,
+            },
+        })
+    }
 }

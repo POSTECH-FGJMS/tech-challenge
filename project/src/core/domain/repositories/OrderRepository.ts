@@ -6,4 +6,5 @@ export default interface OrderRepository {
     readOrders(orderValues: OrderRead): Promise<OrderEntity[]>
     updateOrders(orderId: ID, orderValues: OrderRead): Promise<void>
     deleteOrder(orderId: ID): Promise<void>
+    readQueue(): Promise<OrderEntity[]>
 }
