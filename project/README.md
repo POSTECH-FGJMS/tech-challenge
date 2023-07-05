@@ -1,35 +1,9 @@
 # Lanchonete API
 
-## Rodando a aplicação localmente
+Esse projeto diz respeito a uma API para uma lanchonete, capaz de gerenciar o cardápio, pedidos e clientes de uma lanchonete.
 
-Para executar a API da Lanchonete localmente, siga as etapas abaixo:
+## Documentação
 
-### Instalação de dependências
-
-No diretório raiz do projeto, execute o seguinte comando para instalar as dependências necessárias:
-
-```bash
-npm install
-```
-
-### Executando o servidor
-
-Após a instalação das dependências, execute o seguinte comando para iniciar o servidor:
-
-```bash
-npm run start
-```
-
-### Executando o servidor conteinerizado
-
-Use um desses comandos para iniciar a aplicação:
-
-```bash
-npm run docker
-```
-
-ou
-
-```bash
-docker compose up
-```
+ - [Como rodar a aplicação localmente](./docs/como_rodar.md)
+ - [Rotas disponíveis na aplicação](./docs/rotas.md)
+ - [Como testar a aplicação](./docs/como_testar.md)
