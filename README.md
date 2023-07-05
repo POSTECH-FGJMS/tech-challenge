@@ -1,28 +1,17 @@
-# Tech Challenge Wiki
+# Tech Challenge
 
-## Publicando documentação no github pages
+O projeto a ser apresentado na Tech Challenge está dividido em duas partes:
 
-Como explicado na [documentação do mkdocs](https://www.mkdocs.org/user-guide/deploying-your-docs/), executar o comando abaixo na raiz do projeto (ou onde estiver o arquivo mkdocs.yml):
+## Wiki
 
-```sh
-mkdocs gh-deploy
-```
+Localizado em [/wiki](./wiki/).
 
-A documentação vai estar disponível no endereço: https://postech-fgjms.github.io/tech-challenge/
+Diz respeito a documentação do projeto.
 
-## Rodando localmente
+Também está disponível online em: [https://postech-fgjms.github.io/tech-challenge/](https://postech-fgjms.github.io/tech-challenge/)
 
-Seguem abaixo os passos para rodar a wiki localmente.
+## Projeto
 
-### Instalar dependências
+Localizado em [/project](./project/).
 
-- [Docker](https://docs.docker.com/get-docker/)
-- [docker-compose](https://docs.docker.com.zh.xy2401.com/v17.12/compose/install/)
-
-### Comandos para rodar
-
-```sh
-docker-compose up --build
-```
-
-Após rodar esses passos a wiki deve estar disponível em `http://localhost:8000`.
+Diz respeito ao código realizado durante a realização do Tech Challenge.
